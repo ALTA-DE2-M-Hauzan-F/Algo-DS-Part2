@@ -1,12 +1,13 @@
 def count_item_and_sort(items):
     result = ""
-    sort_items=sorted(sorted(items),key=items.count)
+    # create set of items, kemudian di-sort
+    sort_items=sorted(sorted(set(items)),key=items.count)
 
     for i in sort_items:
-        if i not in result:
-            if i==len(sort_items)-1:
-                result +=f'{i}->{str(items.count(i))}'
-            else: result +=f'{i}->{str(items.count(i))} '
+        # cek index i di list sort_items
+            if sort_items.index(i) < len(sort_items)-1:
+                result +=f'{i}->{str(items.count(i))} '
+            else: result +=f'{i}->{str(items.count(i))}'
     return result
 
 if __name__ == "__main__":

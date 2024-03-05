@@ -1,5 +1,21 @@
 def maximum_buy_product(money, product_price):
-    return 0
+    price_list=[]
+    n= len(product_price)
+
+    # generate semua list price yang berurutan
+    for i in range(n):
+        for j in range(n-i):
+            price_list.append(product_price[j:i+j+1])
+    
+    # get maximum sum per elemen l
+    max_product=0
+    max_sum=0
+    for p in price_list:
+        sumlist=sum(p)
+        if max_product < len(p):
+            if sumlist <= money:
+                max_product= len(p)
+    return max_product
 
 if __name__ == "__main__":
     print(maximum_buy_product(50000, [25000, 25000, 10000, 14000]))      # 3
